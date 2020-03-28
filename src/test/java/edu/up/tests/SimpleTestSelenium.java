@@ -16,7 +16,7 @@ public class SimpleTestSelenium {
     public void ShouldOpenBrowser() {
         WebDriver driver = WebDriverFactory.getWebDriver();
         driver.navigate().to("https://www.up.edu.mx/es");
-        driver.close();
+        driver.quit();
     }
 
     @Test (groups = {"Basic", "Incomplete"})
