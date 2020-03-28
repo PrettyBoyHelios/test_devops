@@ -12,14 +12,14 @@ import java.nio.charset.StandardCharsets;
 
 public class SimpleTestSelenium {
 
-    @Test
+    @Test (groups = {"Basic"})
     public void ShouldOpenBrowser() {
         WebDriver driver = WebDriverFactory.getWebDriver();
         driver.navigate().to("https://www.up.edu.mx/es");
         driver.close();
     }
 
-    @Test
+    @Test (groups = {"Basic", "Incomplete"})
     public void shouldReturnNumberOfLinks(){
         /* TODO */
         /*Add code to obtain the number of links and print to console*/
