@@ -3,7 +3,6 @@ package edu.up.framework.base;
 
 import edu.up.framework.utils.OnFailure;
 import edu.up.framework.utils.OnSuccess;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.*;

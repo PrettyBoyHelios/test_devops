@@ -3,13 +3,10 @@ package edu.up.framework.base;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.io.File;
-import java.rmi.server.ExportException;
 import java.util.Objects;
 
-import static edu.up.framework.base.WebDriverBySystem.*;
+import static edu.up.framework.base.WebDriverBySystem.getWebDriverFile;
 
 public class ChromeDriverManager extends DriverManager {
 

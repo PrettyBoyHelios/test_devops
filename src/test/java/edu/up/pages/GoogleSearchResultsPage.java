@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+@SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
 public class GoogleSearchResultsPage {
 
     @FindBy(className = "rc")

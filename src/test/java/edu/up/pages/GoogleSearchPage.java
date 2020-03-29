@@ -11,7 +11,7 @@ public class GoogleSearchPage {
     @FindBy(name ="q")
     WebElement searchTextBox;
 
-    @FindBy(name="btnG")
+    @FindBy(name="btnK")
     WebElement searchButton;
 
     //Injection of Web Driver
@@ -20,8 +20,13 @@ public class GoogleSearchPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void searchFor(String sentence){
+    public void searchFor(String sentence) {
         searchTextBox.sendKeys(sentence);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         searchButton.click();
     }
 }

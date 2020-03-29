@@ -6,13 +6,12 @@ import com.google.inject.Scopes;
 import com.google.inject.name.Names;
 import edu.up.framework.base.ChromeDriverManager;
 import edu.up.framework.base.DriverManager;
-import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
 import java.util.Properties;
 
 public class DriverModule extends AbstractModule {
@@ -24,11 +23,13 @@ public class DriverModule extends AbstractModule {
 
         //reading from property file
         try{
-        Properties properties = new Properties();
-        properties.load(new FileInputStream("qa.properties"));
+            Properties properties = new Properties();
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            InputStream inputStream = loader.getResourceAsStream("environment/qa.properties");
+            properties.load(Objects.requireNonNull(inputStream));
             Names.bindProperties(binder(),properties);
-        }catch (IOException e){
-            //skip
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

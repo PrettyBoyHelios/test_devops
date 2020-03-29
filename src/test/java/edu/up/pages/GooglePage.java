@@ -6,14 +6,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import java.util.stream.Stream;
-
 public class GooglePage {
 
     private final WebDriver driver;
 
     @Inject
-    @Named("application.ulr")
+    @Named("application.url")
     private String url;
 
     @Inject
@@ -45,8 +43,8 @@ public class GooglePage {
         return googleSearchResultsPage;
     }
 
-    public Object execute(String script) {
+    public void execute(String script) {
         // javascriptExecutor.executeScript(script); OR javascriptExecutor.executeAsyncScript(script);
-        return javascriptExecutor.executeScript(script);
+        javascriptExecutor.executeScript(script);
     }
 }
