@@ -7,6 +7,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.rmi.server.ExportException;
+import java.util.Objects;
+
+import static edu.up.framework.base.WebDriverBySystem.*;
 
 public class ChromeDriverManager extends DriverManager {
 
@@ -17,7 +20,7 @@ public class ChromeDriverManager extends DriverManager {
         if(null== chromeDriverService){
             try{
                  chromeDriverService = new ChromeDriverService.Builder()
-                        .usingDriverExecutable(new File(WebDriverBySystem.getWebDriverFile()))
+                        .usingDriverExecutable(new File(Objects.requireNonNull(getWebDriverFile())))
                         .usingAnyFreePort()
                         .build();
                 chromeDriverService.start();
@@ -35,10 +38,8 @@ public class ChromeDriverManager extends DriverManager {
 
     @Override
     protected void createService() {
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("test-type");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        driver = new ChromeDriver(chromeDriverService,capabilities);
+        driver = new ChromeDriver(chromeDriverService,options);
     }
 }

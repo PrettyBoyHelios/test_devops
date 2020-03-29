@@ -7,9 +7,12 @@ import java.nio.charset.StandardCharsets;
 public class WebDriverBySystem {
     private static String WINDOWS_DRIVER = "/chromedriver/windows/chromedriver.exe";
     private static String MAC_DRIVER = "/chromedriver/mac/chromedriver";
+    private static String LINUX_DRIVER = "/chromedriver/linux/chromedriver";
 
     public static String getWebDriverFile() {
+        System.out.println("Entering to OS identification");
         if (System.getProperty("os.name").contains("Mac")) {
+            System.out.println("MacOS detected");
             File cDriver = new File(WebDriverBySystem.class.getResource(MAC_DRIVER).getFile());
 
             // Is it executable
@@ -25,17 +28,17 @@ public class WebDriverBySystem {
             return WebDriverBySystem.class.getResource(MAC_DRIVER).getFile();
         }
         if (System.getProperty("os.name").contains("Linux")){
-            /*
-            TODO
-             Implement code for linux OS
-            */
+            System.out.println("Linux OS detected");
+            String sDriver =WebDriverBySystem.class.getResource(LINUX_DRIVER).getFile();
+            System.setProperty("webdriver.chrome.driver", urlDecode(sDriver) );
+            return WebDriverBySystem.class.getResource(LINUX_DRIVER).getFile();
         }
-        if (System.getProperty("os.name").contains("Windows")){
+        else {
+            System.out.println("Windows OS detected");
             String sDriver =WebDriverBySystem.class.getResource(WINDOWS_DRIVER).getFile();
             System.setProperty("webdriver.chrome.driver", urlDecode(sDriver) );
             return WebDriverBySystem.class.getResource(WINDOWS_DRIVER).getFile();
         }
-        return null;
     }
 
     private static String urlDecode(String value)  {

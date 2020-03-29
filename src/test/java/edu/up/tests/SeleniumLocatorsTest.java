@@ -4,7 +4,6 @@ package edu.up.tests;
 import edu.up.framework.base.TestBase;
 import io.qameta.allure.Description;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class SeleniumLocatorsTest extends TestBase {
 
-    @Test (description = "Should math the number of links for top central section")
+    @Test (groups = {"Basic"}, description = "Should math the number of links for top central section")
     @Description("Validation of the number of top section links")
     public void ShouldCountTopLinksTest(){
         // arrange
@@ -32,7 +31,8 @@ public class SeleniumLocatorsTest extends TestBase {
         printList(links);
     }
 
-    @Test ( description = "Should select Model 3 for additional details")
+
+    @Test (groups = {"Basic"}, description = "Should select Model 3 for additional details")
     @Description("Model 3 car selection")
     public void ShouldSelectModel3() {
         // arrange
