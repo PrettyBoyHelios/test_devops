@@ -18,25 +18,24 @@ public class WebDriverFactory {
     private final static Logger logger = LoggerFactory.getLogger(WebDriverFactory.class);
     private static String WINDOWS_DRIVER = "/chromedriver/windows/chromedriver.exe";
     private static String MAC_DRIVER = "/chromedriver/mac/chromedriver";
+    private static final String LINUX_DRIVER = "/chromedriver/linux/chromedriver";
 
     private static int iPosX;
     private static int iPosY;
 
     public static WebDriver getWebDriver() {
         if (System.getProperty("os.name").contains("Mac")) {
-            File cDriver = new File(WebDriverFactory.class.getResource(MAC_DRIVER).getFile());
-
-            // Is it executable
-            if (!cDriver.canExecute()) {
-                cDriver.setExecutable(true);
-            }
-            System.setProperty("webdriver.chrome.driver", WebDriverFactory.class.getResource(MAC_DRIVER).getFile());
-
-            // Now checking for existence of Chrome executable.'
-            if (!new File("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome").exists()) {
-                throw new RuntimeException();
-            }
-        } else{
+            System.out.println("Mac OS detected");
+            String sDriver =WebDriverFactory.class.getResource(MAC_DRIVER).getFile();
+            System.setProperty("webdriver.chrome.driver",  urlDecode(sDriver) );
+        }
+        if (System.getProperty("os.name").contains("Linux")){
+            System.out.println("Linux OS detected");
+            String sDriver =WebDriverFactory.class.getResource(LINUX_DRIVER).getFile();
+            System.setProperty("webdriver.chrome.driver", urlDecode(sDriver) );
+        }
+        else{
+            System.out.println("Windows OS detected");
             String sDriver =WebDriverFactory.class.getResource(WINDOWS_DRIVER).getFile();
             System.setProperty("webdriver.chrome.driver", urlDecode(sDriver) );
         }
