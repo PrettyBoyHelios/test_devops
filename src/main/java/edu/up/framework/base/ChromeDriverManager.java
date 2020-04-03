@@ -35,10 +35,8 @@ public class ChromeDriverManager extends DriverManager {
 
     @Override
     protected void createService() {
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("test-type");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        driver = new ChromeDriver(chromeDriverService,capabilities);
+        driver = new ChromeDriver(chromeDriverService,options);
     }
 }
