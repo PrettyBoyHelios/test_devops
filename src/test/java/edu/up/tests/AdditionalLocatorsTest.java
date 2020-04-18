@@ -1,17 +1,13 @@
 package edu.up.tests;
 
-import cucumber.api.java.en_old.Ac;
 import edu.up.framework.base.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Sleeper;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-
-import static java.lang.Thread.sleep;
 
 public class AdditionalLocatorsTest extends TestBase  {
 
